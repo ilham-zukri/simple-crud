@@ -35,6 +35,7 @@
         </table>
     </form>
     <?php
+    //include config file
     include_once("config.php");
 
     //action when button is clicked
