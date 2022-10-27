@@ -46,7 +46,7 @@
         $origin = $_POST['origin'];
         $price = $_POST['price'];
 
-        $result = mysqli_query($mysqli, "INSERT INTO cars(model,type,cubication,origin,price) VALUES ('$model','$type','$cubication','$origin','$price')");
+        mysqli_query($mysqli, "INSERT INTO cars(model,type,cubication,origin,price) VALUES ('$model','$type','$cubication','$origin','$price')");
         echo "car data has been added successfully. <a href='index.php'>View Cars</a>";
     }
     ?>
