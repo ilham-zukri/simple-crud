@@ -20,7 +20,6 @@
                 <td>Cubication</td>
                 <td><input type="text" name="cubication"></td>
             </tr>
-            <tr>
                 <td>Origin</td>
                 <td><input type="text" name="origin"></td>
             </tr>
