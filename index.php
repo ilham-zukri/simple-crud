@@ -26,9 +26,9 @@ $result = mysqli_query($mysqli, 'SELECT * FROM cars ORDER BY id DESC');
                 echo "<tr>";
                 echo "<td>".$car_data['model']."</td>";
                 echo "<td>".$car_data['type']."</td>";
-                echo "<td>".$car_data['cubication']."</td>";
+                echo "<td>".$car_data['cubication']."cc"."</td>";
                 echo "<td>".$car_data['origin']."</td>";
-                echo "<td>".$car_data['price']."</td>";
+                echo "<td>".$car_data['price']." idr"."</td>";
                 echo "<td><a href='edit.php?id=$car_data[id]'>edit</a> | <a href='delete.php?id=$car_data[id]'>Delete</td>";
             }
         ?>
