@@ -3,7 +3,7 @@
 $mysqli = mysqli_connect(
     'localhost',
     'root',
-    '',
+    'useradmin',
     'cars_db'
 );
 
