@@ -1,9 +1,8 @@
 <?php
 //include database connection file
 include_once("config.php");
-
 //check if form submited for car data update, then redirect after
-if(isset($_POST['update'])){
+if (isset($_POST['update'])) {
     $id = $_POST['id'];
 
     $model = $_POST['model'];
@@ -13,8 +12,8 @@ if(isset($_POST['update'])){
     $price = $_POST['price'];
 
     //update car data
-    $result = mysqli_query($mysqli, "UPDATE cars SET model='$model',type='$type',cubication='$cubication',origin='$origin',price='$price' WHERE id=$id");
-    
+  mysqli_query($mysqli, "UPDATE cars SET model='$model',type='$type',cubication='$cubication',origin='$origin',price='$price' WHERE id=$id");
+
     //redirect to homepage to see the change
     header("Location: index.php");
 }
@@ -29,7 +28,7 @@ $id = $_GET['id'];
 //fetch car data based on id
 $result = mysqli_query($mysqli, "SELECT * FROM cars WHERE id=$id");
 
-while($car_data = mysqli_fetch_array($result)){
+while ($car_data = mysqli_fetch_array($result)) {
     $model = $car_data['model'];
     $type = $car_data['type'];
     $cubication = $car_data['cubication'];
@@ -37,22 +36,19 @@ while($car_data = mysqli_fetch_array($result)){
     $price = $car_data['price'];
 }
 ?>
+<html>
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Cars Data</title>
 </head>
+
 <body>
     <a href="index.php">Home</a>
     <br><br>
 
-    <form name="update_car" method="post" action="edit.php">
+    <form name="update_car" method="POST" action="edit.php">
         <table border="0">
-        <tr>
+            <tr>
                 <td>Model</td>
                 <td><input type="text" name="model" value=<?php echo $model; ?>></td>
             </tr>
@@ -64,18 +60,24 @@ while($car_data = mysqli_fetch_array($result)){
                 <td>Cubication</td>
                 <td><input type="text" name="cubication" value=<?php echo $cubication; ?>></td>
             </tr>
-                <td>Origin</td>
-                <td><input type="text" name="origin" value=<?php echo $origin; ?>></td>
+            <td>Origin</td>
+            <td><input type="text" name="origin" value=<?php echo $origin; ?>></td>
             </tr>
             <tr>
                 <td>Price</td>
                 <td><input type="text" name="price" value=<?php echo $price; ?>></td>
             </tr>
             <tr>
-                <td></td>
-                <td><input type="submit" name="update" value="Update"></td>
+                <td><input type="hidden" name="id" value=<?php echo $_GET['id']?>></td>
+                <td><input type="submit" name="update"></td>
             </tr>
         </table>
     </form>
+    <?php
+    echo "<pre>";
+    print_r("UPDATE cars SET model='$model',type='$type',cubication='$cubication',origin='$origin',price='$price' WHERE id=$id");
+    exit;
+    ?>
 </body>
+
 </html>
